@@ -7,8 +7,10 @@ python demo.py   -> voir résultat.
 ----------------------------------------------------------------------------------------------------------
 fichier:
 ```
-gen_model.sh ```permet de gérer un model prototxt.
+gen_model.sh 
+```permet de gérer un model prototxt.
 Ce fichier crée un répertoire "example" incluant les fichiers:
+```
 ```
 MobileNetSSD_deploy.prototxt.
 MobileNetSSD_test.prototxt.
