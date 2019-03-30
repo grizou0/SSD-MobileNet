@@ -8,7 +8,7 @@ python demo.py   -> voir résultat.
 fichier:
 ```
 gen_model.sh 
-```permet de gérer un model prototxt.
+```permet de gérer un model prototxt en spécifiant le nombre de classe.
 Ce fichier crée un répertoire "example" incluant les fichiers:
 ```
 ```
@@ -16,7 +16,45 @@ MobileNetSSD_deploy.prototxt.
 MobileNetSSD_test.prototxt.
 MobileNetSSD_train.prototxt.
 ```
+1-Creation fichier lmdb à partir d'image jpg
+On utilise le fichier create_imagenet.sh
+On modifie les path des répertoires de façon à définir:
+fichier ou on va placer le lmdb (il faut supprimer ce repertoire lmdb s'il existe)
+fichier train.txt et val.txt
+fichier convert_image dans le repertoire ssd-caffe
+fichier jpg pour le train
+fichier jpg pour le val
+```
+#path ou les repertoire lmdb vont être créé
+EXAMPLE=/home/jp/data/myssd/
+#path ou se trouve train.txt et val.txt
+DATA=/home/jp/data/myssd/VOC2007/ImageSets/Main/
+#path ou les outils convert_image se trouve (dans ssd-caffe)
+TOOLS=/opt/movidius/ssd-caffe/build/tools
+#path ou les images JPEG se trouvent
+TRAIN_DATA_ROOT=/home/jp/data/myssd/VOC2007/JPEGImages/
+#path ou les images JPEG se trouvent
+VAL_DATA_ROOT=/home/jp/data/myssd/VOC2007/JPEGImages/
 
+# Set RESIZE=true to resize the images to 256x256. Leave as false if images have
+# already been resized using another tool.
+RESIZE=true
+if $RESIZE; then
+  RESIZE_HEIGHT=256
+  RESIZE_WIDTH=256
+else
+  RESIZE_HEIGHT=0
+  RESIZE_WIDTH=0
+fi
+
+
+jp@jp-G750JH://opt/movidius/ssd-caffe/examples/imagenet$ ./create_imagenet.sh
+```
+Ici, on a créé deux répertoires ilsvrc12_train_lmdb et ilsvrc12_val_lmdb dans le path:
+home/jp/data/myssd
+
+2: Train
+........
 python merge_bn.py --model xxxx.prototxt --weights snapshot/xxx.caffemodel    pour créer un caffemodel
 
 # MobileNet-SSD
