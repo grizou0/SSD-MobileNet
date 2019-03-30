@@ -1,3 +1,15 @@
+Avant tout, il faut au préalable installer SSD-caffe et Opencv (dans mon cas opencv-3.4.0)
+Placer le répertoire Movile_SSD_master dans SSD-caffe/examples.
+Vérifier que dans python, import cv2 et import caffe fonctionnent.
+lancer la démo:
+cd opt/movidius/ssd-caffe/MobileNet_SSD_master
+python demo.py   -> voir résultat.
+----------------------------------------------------------------------------------------------------------
+fichier:
+gen_model.sh permet de gérer un model prototxt ( besoin d'un lmdb trainval et test) et labelmap.txt
+(voir creation prototxt dans sdd_caffe).
+python merge_bn.py --model xxxx.prototxt --weights snapshot/xxx.caffemodel    pour créer un caffemodel
+
 # MobileNet-SSD
 A caffe implementation of MobileNet-SSD detection network, with pretrained weights on VOC0712 and mAP=0.727.
 
