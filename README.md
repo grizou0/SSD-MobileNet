@@ -6,12 +6,14 @@ cd opt/movidius/ssd-caffe/MobileNet_SSD_master
 python demo.py   -> voir résultat.
 ----------------------------------------------------------------------------------------------------------
 fichier:
-gen_model.sh permet de gérer un model prototxt.
+```
+gen_model.sh ```permet de gérer un model prototxt.
 Ce fichier crée un répertoire "example" incluant les fichiers:
-
+```
 MobileNetSSD_deploy.prototxt.
 MobileNetSSD_test.prototxt.
 MobileNetSSD_train.prototxt.
+```
 
 python merge_bn.py --model xxxx.prototxt --weights snapshot/xxx.caffemodel    pour créer un caffemodel
 
