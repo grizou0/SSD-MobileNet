@@ -5,7 +5,7 @@ lancer la démo:
 cd opt/movidius/ssd-caffe/MobileNet_SSD_master
 python demo.py   -> voir résultat.
 ----------------------------------------------------------------------------------------------------------
-#fichier:
+# fichier:
 ```
 gen_model.sh 
 ```permet de gérer un model prototxt en spécifiant le nombre de classe.
